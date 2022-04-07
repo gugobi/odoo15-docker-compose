@@ -1,0 +1,27 @@
+services:
+  web:
+    image: odoo:15.0
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./config:/etc/odoo
+      - ./addons:/mnt/custom_addons
+  # dbms:
+  #   image: dpage/pgadmin4
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - "5050:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: franciscou@timeclub.com
+  #     PGADMIN_DEFAULT_PASSWORD: root
+  db:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
