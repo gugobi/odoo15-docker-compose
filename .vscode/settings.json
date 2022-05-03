@@ -1,0 +1,10 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.(js|xml|py|scss)$",
+        "cmd": "docker-compose restart web"
+      },
+    ]
+  }
+}
